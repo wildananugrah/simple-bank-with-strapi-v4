@@ -62,7 +62,8 @@ module.exports = {
                     payment_type: requestBody.payment_type,
                     status: "SUCCEED",
                     action: "DEBIT",
-                    amount: requestBody.amount
+                    amount: requestBody.amount,
+                    publishedAt: new Date()
                 }
             }
             
@@ -97,7 +98,8 @@ module.exports = {
                     payment_type: requestBody.payment_type,
                     status: "SUCCEED",
                     action: "CREDIT",
-                    amount: requestBody.amount
+                    amount: requestBody.amount,
+                    publishedAt: new Date()
                 }
             }
 
