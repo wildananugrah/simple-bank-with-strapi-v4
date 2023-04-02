@@ -59,7 +59,7 @@ module.exports = {
                 data: {
                     journal: await get_journal(),
                     account_number: requestBody.account_number,
-                    payment_type: requestBody.payment_type,
+                    type: requestBody.type,
                     status: "SUCCEED",
                     action: "DEBIT",
                     amount: requestBody.amount,
@@ -95,7 +95,7 @@ module.exports = {
                 data: {
                     journal: await get_journal(),
                     account_number: requestBody.account_number,
-                    payment_type: requestBody.payment_type,
+                    type: requestBody.type,
                     status: "SUCCEED",
                     action: "CREDIT",
                     amount: requestBody.amount,
