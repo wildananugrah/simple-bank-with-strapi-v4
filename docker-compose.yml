@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+
+  app-simple-bank:
+    build:
+      context: .
+      dockerfile: ./app.Dockerfile
+    container_name: app-simple-bank
+    environment:
+      - DATABASE_HOST=db-simple-bank
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=postgres
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=password
+      - HOST=0.0.0.0
+      - PORT=1337
+      - APP_KEYS=mc68ZV26OzOPQ0A1ESUvNA==,b4sM7ksQE3eqfteYmqWzwA==,UUWwjcxNoDrGvSwnDDhwxA==,j7T57Bls1mSggOLIrsljkg==
+      - API_TOKEN_SALT=nagThNX7aJINn6oaOpMOyg==
+      - ADMIN_JWT_SECRET=9VrfUyP40Cqxy+6qNvucQQ==
+      - TRANSFER_TOKEN_SALT=ar4K31sLK7NONBhHQ6t2zw==
+    ports:
+      - "8000:1337"
+    depends_on:
+      - db-simple-bank
+    volumes:
+      - ./src:/opt/app/src
+      - ./config:/opt/app/config
+      - ./package.json:/opt/app/package.json
+      - ./public/uploads:/opt/app/public/uploads
+    networks:
+      app-net: {}
+
+  db-simple-bank:
+    image: postgres:alpine
+    container_name: db-simple-bank
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./data/pg-data:/var/lib/postgresql/data
+    networks:
+      app-net: {}
+
+networks:
+  app-net:
+    external: true
+    name: 'dev-to-network'

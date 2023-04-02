@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "singularName": "transaction",
+    "pluralName": "transactions",
+    "displayName": "Transaction"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "journal": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "account_number": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@host=http://localhost:8000
+
+POST {{host}}/api/auth/local
+Content-Type: application/json
+
+{
+    "identifier" : "developer",
+    "password" : "password"
+}
+
+### create customer
+
+POST {{host}}/api/customers
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgwNDE1MzI1LCJleHAiOjE2ODMwMDczMjV9.HaZpvrouMAjkvm51w0DkRwXjKOdVrInkYvcKfUE_teY
+
+{
+    "data" : {
+        "id_number" : "3175023005912345",
+        "fullname" : "Wildan Anugrah"
+    }
+}
+
+### create account
+POST {{host}}/api/accounts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgwNDE1MzI1LCJleHAiOjE2ODMwMDczMjV9.HaZpvrouMAjkvm51w0DkRwXjKOdVrInkYvcKfUE_teY
+
+{
+    "data" : {
+        "cif_number" : "5685265072",
+        "type" : "DEPOSIT"
+    }
+}
+
+### accounts
+GET {{host}}/api/accounts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgwNDE1MzI1LCJleHAiOjE2ODMwMDczMjV9.HaZpvrouMAjkvm51w0DkRwXjKOdVrInkYvcKfUE_teY
+
+
+### credit
+POST {{host}}/api/transactions/credit
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgwNDE1MzI1LCJleHAiOjE2ODMwMDczMjV9.HaZpvrouMAjkvm51w0DkRwXjKOdVrInkYvcKfUE_teY
+
+
+{
+    "data" : {
+        "account_number" : "1473367796",
+        "payment_type" : "CREDIT",
+        "amount" : 10000
+    }
+}
+
+### debit
+POST {{host}}/api/transactions/debit
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjgwNDE1MzI1LCJleHAiOjE2ODMwMDczMjV9.HaZpvrouMAjkvm51w0DkRwXjKOdVrInkYvcKfUE_teY
+
+{
+    "data" : {
+        "account_number" : "1473367796",
+        "payment_type" : "DEBIT",
+        "amount" : 2000
+    }
+}
